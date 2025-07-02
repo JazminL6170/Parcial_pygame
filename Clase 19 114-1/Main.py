@@ -50,6 +50,7 @@ while corriendo:
             pygame.mixer.music.set_volume(porcentaje_musica)
             pygame.mixer.music.play(-1)
             bandera_juego = True
+        
         ventana_actual = mostrar_juego(pantalla,cola_eventos,datos_juego,lista_preguntas)
     elif ventana_actual == "terminado":
         if bandera_juego == True:

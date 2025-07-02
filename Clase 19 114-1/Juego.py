@@ -5,13 +5,14 @@ from Funciones import *
 
 pygame.init()
 
-fondo_pantalla = pygame.transform.scale(pygame.image.load("fondo.jpg"),PANTALLA)
-cuadro_pregunta = crear_elemento_juego("textura_pregunta.jpg",ANCHO_PREGUNTA,ALTO_PREGUNTA,80,80)
+fondo_pantalla = pygame.transform.scale(pygame.image.load("fondo_juego.jpg"),PANTALLA)
+cuadro_pregunta = crear_elemento_juego("textura_pregunta.jpg",ANCHO_PREGUNTA,ALTO_PREGUNTA,120,80)
 lista_respuestas = crear_lista_respuestas("textura_respuesta.jpg",ANCHO_BOTON,ALTO_BOTON,125,245)
 evento_tiempo = pygame.USEREVENT 
 pygame.time.set_timer(evento_tiempo,1000)    
 
 def mostrar_juego(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event],datos_juego:dict,lista_preguntas:list) -> str:
+
     retorno = "juego"
     pregunta_actual = lista_preguntas[datos_juego["indice"]]
     
@@ -54,10 +55,11 @@ def mostrar_juego(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event],
     mostrar_texto(lista_respuestas[0]["superficie"],pregunta_actual["respuesta_1"],(15,15),FUENTE_RESPUESTA,COLOR_BLANCO)
     mostrar_texto(lista_respuestas[1]["superficie"],pregunta_actual["respuesta_2"],(15,15),FUENTE_RESPUESTA,COLOR_BLANCO)
     mostrar_texto(lista_respuestas[2]["superficie"],pregunta_actual["respuesta_3"],(15,15),FUENTE_RESPUESTA,COLOR_BLANCO)
-        
+    #mostrar_texto(lista_respuestas[3]["superficie"],pregunta_actual["respuesta_4"],(15,15),FUENTE_RESPUESTA,COLOR_BLANCO)
+    
     mostrar_texto(pantalla,f"VIDAS: {datos_juego['vidas']}",(10,10),FUENTE_TEXTO,COLOR_NEGRO)
     mostrar_texto(pantalla,f"PUNTUACION: {datos_juego['puntuacion']}",(10,40),FUENTE_TEXTO,COLOR_NEGRO)
-    mostrar_texto(pantalla,f"TIEMPO: {datos_juego['tiempo_restante']} seg",(275,10),FUENTE_TEXTO,COLOR_NEGRO)
+    mostrar_texto(pantalla,f"TIEMPO: {datos_juego['tiempo_restante']} seg",(350,10),FUENTE_TEXTO,COLOR_NEGRO)
 
     #pygame.draw.rect(pantalla,COLOR_NEGRO,cuadro_pregunta["rectangulo"],3)
     return retorno
