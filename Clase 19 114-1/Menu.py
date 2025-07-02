@@ -31,10 +31,10 @@ def mostrar_menu(pantlla:pygame.Surface,cola_eventos:list[pygame.event.Event]) -
     for i in range(len(lista_botones)):
         pantlla.blit(lista_botones[i]["superficie"],lista_botones[i]["rectangulo"])
         
-    mostrar_texto(lista_botones[BOTON_JUGAR]["superficie"],"JUGAR",(80,10),FUENTE_TEXTO,COLOR_BLANCO)
-    mostrar_texto(lista_botones[BOTON_CONFIG]["superficie"],"AJUSTES",(80,10),FUENTE_TEXTO,COLOR_BLANCO)
-    mostrar_texto(lista_botones[BOTON_PUNTUACIONES]["superficie"],"RANKINGS",(80,10),FUENTE_TEXTO,COLOR_BLANCO)
-    mostrar_texto(lista_botones[BOTON_SALIR]["superficie"],"SALIR",(80,10),FUENTE_TEXTO,COLOR_BLANCO)
+    mostrar_texto(lista_botones[BOTON_JUGAR]["superficie"],"JUGAR",(75,10),FUENTE_TEXTO,COLOR_AMARILLO)
+    mostrar_texto(lista_botones[BOTON_CONFIG]["superficie"],"AJUSTES",(75,10),FUENTE_TEXTO,COLOR_AMARILLO)
+    mostrar_texto(lista_botones[BOTON_PUNTUACIONES]["superficie"],"RANKINGS",(75,10),FUENTE_TEXTO,COLOR_AMARILLO)
+    mostrar_texto(lista_botones[BOTON_SALIR]["superficie"],"SALIR",(75,10),FUENTE_TEXTO,COLOR_AMARILLO)
 
 
     return retorno

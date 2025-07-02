@@ -51,7 +51,7 @@ def crear_lista_respuestas(textura:str,ancho:int,alto:int,pos_x:int,pos_y:int):
 
 def crear_botones_menu() -> list:
     lista_botones = []
-    pos_x = 125
+    pos_x = 150
     pos_y = 115
 
     for i in range(4):
