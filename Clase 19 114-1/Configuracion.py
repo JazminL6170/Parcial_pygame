@@ -4,6 +4,8 @@ from Funciones import *
 
 pygame.init()
 
+#holaJaz
+
 boton_suma = crear_elemento_juego("mas.webp",60,60,420,200)
 boton_resta = crear_elemento_juego("menos.webp",60,60,20,200)
 boton_volver = crear_elemento_juego("textura_respuesta.jpg",100,40,10,10)
