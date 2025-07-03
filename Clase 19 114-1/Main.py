@@ -6,6 +6,7 @@ from Configuracion import *
 from Rankings import *
 from Terminado import *
 
+mezclar_lista(lista_preguntas)
 pygame.init()
 pygame.display.set_caption("PREGUNTADOS 114")
 icono = pygame.image.load("icono.png")
@@ -36,10 +37,10 @@ while corriendo:
     
     if ventana_actual == "menu":
         ventana_actual = mostrar_menu(pantalla,cola_eventos)
-        #datos_juego["puntuacion"]= 0
-        #datos_juego["tiempo_restante"] = TIEMPO_JUEGO
-        #datos_juego["vidas"] = 5
-        #datos_juego["nombre"] = ""
+        datos_juego["puntuacion"]= 0
+        datos_juego["tiempo_restante"] = TIEMPO_JUEGO
+        datos_juego["vidas"] = 5
+        datos_juego["nombre"] = ""
 
 
     elif ventana_actual == "salir":
