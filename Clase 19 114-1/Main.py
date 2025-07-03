@@ -18,7 +18,7 @@ datos_juego = {
     "vidas":5,
     "nombre":"",
     "tiempo_restante":TIEMPO_JUEGO,
-    "volumen_musica":100,
+    "volumen_musica":0,
     "indice":0
     }
 

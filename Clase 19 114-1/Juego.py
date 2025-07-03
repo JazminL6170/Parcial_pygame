@@ -8,7 +8,7 @@ pygame.init()
 fondo_pantalla = pygame.transform.scale(pygame.image.load("fondo_juego.jpg"),PANTALLA)
 cuadro_pregunta = crear_elemento_juego("textura_pregunta.jpg",ANCHO_PREGUNTA,ALTO_PREGUNTA,120,80)
 #boton_comodin = crear_elemento_juego("textura_pregunta.jpg",)
-lista_respuestas = crear_lista_respuestas("textura_respuesta.jpg",ANCHO_BOTON,ALTO_BOTON,30,245)
+lista_respuestas = crear_lista_respuestas("textura_respuestas.jpg",ANCHO_BOTON,ALTO_BOTON,30,245)
 evento_tiempo = pygame.USEREVENT 
 pygame.time.set_timer(evento_tiempo,1000)    
 
