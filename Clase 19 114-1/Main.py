@@ -36,6 +36,12 @@ while corriendo:
     
     if ventana_actual == "menu":
         ventana_actual = mostrar_menu(pantalla,cola_eventos)
+        datos_juego["puntuacion"]= 0
+        datos_juego["tiempo_restante"] = TIEMPO_JUEGO
+        datos_juego["vidas"] = 5
+        datos_juego["nombre"] = ""
+
+
     elif ventana_actual == "salir":
         corriendo = False
     elif ventana_actual == "rankings":
@@ -58,8 +64,11 @@ while corriendo:
             pygame.mixer.music.stop()
         ventana_actual = mostrar_fin_juego(pantalla,cola_eventos,datos_juego)
     
+
+    
     print(f"USTED ESTA PARADO EN LA VENTANA: {ventana_actual}")
-    print(f" {bandera_juego}")
+    print(f" {datos_juego['puntuacion']}")
+
     
     pygame.display.flip()
 
