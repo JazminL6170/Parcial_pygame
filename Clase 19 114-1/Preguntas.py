@@ -40,7 +40,7 @@ def crear_diccionario(lista_claves:list,lista_valores:list) -> dict:
 #Siempre va a generar una lista de sólo strings, hay que convertir los numericos en otra función propia
 def parse_csv(lista_elementos,nombre_archivo:str) -> bool: 
     if os.path.exists(nombre_archivo):
-        with open(nombre_archivo,"r") as archivo:
+        with open(nombre_archivo,"r", encoding="utf-8") as archivo:
             lista_claves = obtener_claves(archivo,",")
             for linea in archivo:
                 lista_valores = obtener_valores(linea,",")
