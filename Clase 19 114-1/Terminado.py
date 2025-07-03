@@ -9,7 +9,6 @@ cuadro = crear_elemento_juego("textura_respuesta.jpg",250,50,200,200)
 
 def mostrar_fin_juego(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event],datos_juego:dict) -> str:
     retorno = "terminado"
-    
     for evento in cola_eventos:
         if evento.type == pygame.QUIT:
             #Estaria bueno forzarle al usuario que no pueda salir del juego hasta que guarde la puntuacion -> A gusto de ustedes
@@ -33,8 +32,11 @@ def mostrar_fin_juego(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Eve
                     datos_juego["nombre"] += letra_presionada.upper()
                 else:
                     datos_juego["nombre"] += letra_presionada
-        
-        
+            if letra_presionada == "return":
+                 retorno = "menu"
+            
+
+
     pantalla.fill(COLOR_BLANCO)
     pantalla.blit(cuadro["superficie"],cuadro["rectangulo"])
     mostrar_texto(cuadro["superficie"],datos_juego["nombre"],(10,0),fuente,COLOR_BLANCO)

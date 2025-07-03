@@ -36,6 +36,7 @@ def crear_elemento_juego(textura:str,ancho:int,alto:int,pos_x:int,pos_y:int) -> 
     elemento_juego = {}
     elemento_juego["superficie"] = pygame.transform.scale(pygame.image.load(textura),(ancho,alto))
     elemento_juego["rectangulo"] = pygame.Rect(pos_x,pos_y,ancho,alto)
+    #elemento_juego["circulo"] = {"centro": (centro_x, centro_y),"radio": radio}
     
     return elemento_juego
 
@@ -51,6 +52,17 @@ def crear_lista_respuestas(textura:str,ancho:int,alto:int,pos_x:int,pos_y:int):
              pos_x = 310 
         
     return lista_respuestas
+
+def crear_comodines(textura:str,ancho:int,alto:int,pos_x:int,pos_y:int):
+    lista_comodin = []
+
+    for i in range(4):
+        comodin = crear_elemento_juego(textura,ancho,alto,pos_x,pos_y)
+        lista_comodin.append(comodin)
+        pos_x += 30 
+ 
+        
+    return lista_comodin
 
 def crear_botones_menu() -> list:
     lista_botones = []

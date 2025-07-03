@@ -58,7 +58,8 @@ while corriendo:
             pygame.mixer.music.stop()
         ventana_actual = mostrar_fin_juego(pantalla,cola_eventos,datos_juego)
     
-    #print(f"USTED ESTA PARADO EN LA VENTANA: {ventana_actual}")
+    print(f"USTED ESTA PARADO EN LA VENTANA: {ventana_actual}")
+    print(f" {bandera_juego}")
     
     pygame.display.flip()
 

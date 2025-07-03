@@ -7,6 +7,7 @@ pygame.init()
 
 fondo_pantalla = pygame.transform.scale(pygame.image.load("fondo_juego.jpg"),PANTALLA)
 cuadro_pregunta = crear_elemento_juego("textura_pregunta.jpg",ANCHO_PREGUNTA,ALTO_PREGUNTA,120,80)
+#boton_comodin = crear_elemento_juego("textura_pregunta.jpg",)
 lista_respuestas = crear_lista_respuestas("textura_respuesta.jpg",ANCHO_BOTON,ALTO_BOTON,30,245)
 evento_tiempo = pygame.USEREVENT 
 pygame.time.set_timer(evento_tiempo,1000)    
@@ -57,6 +58,17 @@ def mostrar_juego(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event],
     mostrar_texto(lista_respuestas[2]["superficie"],pregunta_actual["respuesta_3"],(15,15),FUENTE_RESPUESTA,COLOR_BLANCO)
     mostrar_texto(lista_respuestas[3]["superficie"],pregunta_actual["respuesta_4"],(15,15),FUENTE_RESPUESTA,COLOR_BLANCO)
     
+    boton_bomba= pygame.draw.circle(pantalla,COLOR_AMARILLO,(80, 450),30)
+    imagen_bomba = pygame.transform.scale(pygame.image.load("bomba.png"),(40, 40))
+    rect_bomba = imagen_bomba.get_rect(center=(80, 450))
+
+    pygame.draw.circle(pantalla,COLOR_AMARILLO,(200, 450),30)
+    pygame.draw.circle(pantalla,COLOR_AMARILLO,(380, 450),30)
+    pygame.draw.circle(pantalla,COLOR_AMARILLO,(500, 450),30)
+
+    pantalla.blit(cuadro_pregunta["superficie"],cuadro_pregunta["rectangulo"])
+    pantalla.blit(imagen_bomba, rect_bomba)
+
     mostrar_texto(pantalla,f"VIDAS: {datos_juego['vidas']}",(10,10),FUENTE_TEXTO,COLOR_NEGRO)
     mostrar_texto(pantalla,f"PUNTUACION: {datos_juego['puntuacion']}",(10,40),FUENTE_TEXTO,COLOR_NEGRO)
     mostrar_texto(pantalla,f"TIEMPO: {datos_juego['tiempo_restante']} seg",(350,10),FUENTE_TEXTO,COLOR_NEGRO)
