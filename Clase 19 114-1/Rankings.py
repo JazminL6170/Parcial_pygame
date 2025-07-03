@@ -7,8 +7,9 @@ pygame.init()
 boton_volver = crear_elemento_juego("textura_respuesta.jpg",100,40,10,10)
 fondo_pantalla = pygame.transform.scale(pygame.image.load("ranking_fondo.jpg"),PANTALLA)
 def mostrar_rankings(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event],lista_rankings:list) -> str:
+    pantalla.blit(fondo_pantalla, (0,0))
     retorno = "rankings"
-    mostrar_texto(pantalla,leer_json("Ranking_jugados.json"),(10,10), FUENTE_TEXTO, COLOR_BLANCO)
+
     for evento in cola_eventos:
         if evento.type == pygame.QUIT:
             retorno = "salir"
@@ -18,12 +19,19 @@ def mostrar_rankings(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Even
                     CLICK_SONIDO.play()
                     retorno = "menu"
         
+   
     
     pantalla.blit(fondo_pantalla, (0,0))
+    datos = lista_rankings
+    for i in lista_rankings:
+      nombre = str(i[0])
+      mostrar_texto(pantalla, nombre, (8,100),FUENTE_TEXTO, COLOR_BLANCO)
     
+   
     pantalla.blit(boton_volver["superficie"],boton_volver["rectangulo"])
     mostrar_texto(pantalla,f"TOP 10",(200,30),pygame.font.Font("simpson.otf",50), COLOR_BLANCO)
     mostrar_texto(boton_volver["superficie"],"VOLVER",(5,5),FUENTE_RESPUESTA,COLOR_BLANCO)
-
+    pygame.display.flip()
+    
     return retorno
     

@@ -1,10 +1,28 @@
 [
+    [
+        [
+            [
+                {
+                    "Nombre": "jazchu",
+                    "Puntuacion": 325
+                },
+                {
+                    "Nombre": "luna",
+                    "Puntuacion": -75
+                }
+            ],
+            {
+                "Nombre": "maria",
+                "Puntuacion": -75
+            }
+        ],
+        {
+            "Nombre": "ludmila",
+            "Puntuacion": -75
+        }
+    ],
     {
-        "Nombre": "jazmin",
-        "Puntuacion": -125
-    },
-    {
-        "Nombre": "luna",
-        "Puntuacion": 175
+        "Nombre": "ona",
+        "Puntuacion": 125
     }
 ]
