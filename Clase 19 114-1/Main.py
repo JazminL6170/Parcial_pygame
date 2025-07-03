@@ -15,7 +15,7 @@ pantalla = pygame.display.set_mode(PANTALLA)
 corriendo = True
 datos_juego = {
     "puntuacion":0,
-    "vidas":5,
+    "vidas":0,
     "nombre":"",
     "tiempo_restante":TIEMPO_JUEGO,
     "volumen_musica":0,
@@ -36,10 +36,10 @@ while corriendo:
     
     if ventana_actual == "menu":
         ventana_actual = mostrar_menu(pantalla,cola_eventos)
-        datos_juego["puntuacion"]= 0
-        datos_juego["tiempo_restante"] = TIEMPO_JUEGO
-        datos_juego["vidas"] = 5
-        datos_juego["nombre"] = ""
+        #datos_juego["puntuacion"]= 0
+        #datos_juego["tiempo_restante"] = TIEMPO_JUEGO
+        #datos_juego["vidas"] = 5
+        #datos_juego["nombre"] = ""
 
 
     elif ventana_actual == "salir":

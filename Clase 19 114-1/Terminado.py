@@ -4,8 +4,8 @@ from Funciones import *
 
 pygame.init()
 
-fuente = pygame.font.SysFont("Arial Narrow",40)
-cuadro = crear_elemento_juego("textura_respuesta.jpg",250,50,200,200)
+fuente = FUENTE_TEXTO
+cuadro = crear_elemento_juego("textura_cuadro_final.jpg",250,50,20,190)
 fondo_pantalla = pygame.transform.scale(pygame.image.load("foto_final.jpg"),PANTALLA)
 def mostrar_fin_juego(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event],datos_juego:dict) -> str:
     retorno = "terminado"
@@ -39,7 +39,9 @@ def mostrar_fin_juego(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Eve
 
     pantalla.blit(fondo_pantalla,(0,0))
     pantalla.blit(cuadro["superficie"],cuadro["rectangulo"])
-    mostrar_texto(cuadro["superficie"],datos_juego["nombre"],(10,0),fuente,COLOR_BLANCO)
-    mostrar_texto(pantalla,f"Usted obtuvo: {datos_juego["puntuacion"]} puntos",(250,100),fuente,COLOR_NEGRO)
+    mostrar_texto(cuadro["superficie"],datos_juego["nombre"],(10,0),fuente,COLOR_AMARILLO)
+    mostrar_texto(pantalla,"Fin del Juego",(200,20),fuente,COLOR_BLANCO)
+    mostrar_texto(pantalla,"Ingrese su nombre",(20,150),FUENTE_PREGUNTA,COLOR_BLANCO)
+    mostrar_texto(pantalla,f"Usted obtuvo: {datos_juego["puntuacion"]} puntos",(20,85),fuente,COLOR_NEGRO)
     
     return retorno
