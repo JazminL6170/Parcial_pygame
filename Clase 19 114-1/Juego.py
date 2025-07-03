@@ -17,6 +17,89 @@ def mostrar_juego(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event],
     retorno = "juego"
     pregunta_actual = lista_preguntas[datos_juego["indice"]]
     
+    if "tiempo_pregunta" not in datos_juego:
+        datos_juego["tiempo_pregunta"] = 20
+
+    if datos_juego["vidas"] == 0:
+        retorno = "terminado"
+    
+    for evento in cola_eventos:
+        if evento.type == pygame.QUIT:
+            retorno = "salir"
+        
+        elif evento.type == evento_tiempo:
+            datos_juego["tiempo_pregunta"] -= 1
+
+            if datos_juego["tiempo_pregunta"] <= 0:
+                datos_juego["vidas"] -= 1
+                datos_juego["indice"] += 1
+
+                if datos_juego["indice"] >= len(lista_preguntas):
+                    datos_juego["indice"] = 0
+                    mezclar_lista(lista_preguntas)
+
+                datos_juego["tiempo_pregunta"] = 20
+                pregunta_actual = pasar_pregunta(lista_preguntas,datos_juego["indice"],cuadro_pregunta,lista_respuestas)
+
+        elif evento.type == pygame.MOUSEBUTTONDOWN:
+            if evento.button == 1:
+                for i in range(len(lista_respuestas)):
+                    if lista_respuestas[i]["rectangulo"].collidepoint(evento.pos):
+                        respuesta = str(i + 1)
+                        if verificar_respuesta(datos_juego,pregunta_actual,respuesta) == True:
+                            ACIERTO_SONIDO.play()
+                            datos_juego["cantidad_aciertos"] += 1
+
+                            if datos_juego["cantidad_aciertos"] == 5:
+                                datos_juego["vidas"] += 1
+                                datos_juego["cantidad_aciertos"] = 0
+                        else:
+                            ERROR_SONIDO.play()
+                            datos_juego["cantidad_aciertos"] = 0
+                        
+                        datos_juego["indice"] += 1
+
+                        if datos_juego["indice"] >= len(lista_preguntas):
+                            datos_juego["indice"] = 0
+                            mezclar_lista(lista_preguntas)
+                        
+                        datos_juego["tiempo_pregunta"] = 20
+                        pregunta_actual = pasar_pregunta(lista_preguntas,datos_juego["indice"],cuadro_pregunta,lista_respuestas)
+
+    pantalla.blit(fondo_pantalla,(0,0))
+    pantalla.blit(cuadro_pregunta["superficie"],cuadro_pregunta["rectangulo"])
+    
+    for i in range(len(lista_respuestas)):
+        pantalla.blit(lista_respuestas[i]["superficie"],lista_respuestas[i]["rectangulo"])
+    
+    mostrar_texto(cuadro_pregunta["superficie"],pregunta_actual["pregunta"],(15,15),FUENTE_PREGUNTA,COLOR_NEGRO)
+    mostrar_texto(lista_respuestas[0]["superficie"],pregunta_actual["respuesta_1"],(15,15),FUENTE_RESPUESTA,COLOR_BLANCO)
+    mostrar_texto(lista_respuestas[1]["superficie"],pregunta_actual["respuesta_2"],(15,15),FUENTE_RESPUESTA,COLOR_BLANCO)
+    mostrar_texto(lista_respuestas[2]["superficie"],pregunta_actual["respuesta_3"],(15,15),FUENTE_RESPUESTA,COLOR_BLANCO)
+    mostrar_texto(lista_respuestas[3]["superficie"],pregunta_actual["respuesta_4"],(15,15),FUENTE_RESPUESTA,COLOR_BLANCO)
+    
+    boton_bomba = pygame.draw.circle(pantalla,COLOR_AMARILLO,(80, 450),30)
+    imagen_bomba = pygame.transform.scale(pygame.image.load("bomba.png"),(40, 40))
+    rect_bomba = imagen_bomba.get_rect(center=(80, 450))
+
+    pygame.draw.circle(pantalla,COLOR_AMARILLO,(200, 450),30)
+    pygame.draw.circle(pantalla,COLOR_AMARILLO,(380, 450),30)
+    pygame.draw.circle(pantalla,COLOR_AMARILLO,(500, 450),30)
+
+    pantalla.blit(cuadro_pregunta["superficie"],cuadro_pregunta["rectangulo"])
+    pantalla.blit(imagen_bomba, rect_bomba)
+
+    mostrar_texto(pantalla,f"VIDAS: {datos_juego['vidas']}",(10,10),FUENTE_TEXTO,COLOR_NEGRO)
+    mostrar_texto(pantalla,f"PUNTUACION: {datos_juego['puntuacion']}",(10,40),FUENTE_TEXTO,COLOR_NEGRO)
+    mostrar_texto(pantalla,f"TIEMPO: {datos_juego['tiempo_pregunta']} seg",(350,10),FUENTE_TEXTO,COLOR_ROJO)
+
+    return retorno
+
+# def mostrar_juego(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event],datos_juego:dict,lista_preguntas:list) -> str:
+
+    retorno = "juego"
+    pregunta_actual = lista_preguntas[datos_juego["indice"]]
+    
     if datos_juego["vidas"] == 0 or datos_juego["tiempo_restante"] == 0:
         print("GAME OVER")
         retorno = "terminado"
