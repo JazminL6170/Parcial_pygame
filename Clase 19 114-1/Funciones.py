@@ -1,6 +1,8 @@
 import random
 from Constantes import *
 import pygame
+import json
+import os
 
 def mostrar_texto(surface, text, pos, font, color=pygame.Color('black')):
     words = [word.split(' ') for word in text.splitlines()]  # 2D array where each row is a list of words.
@@ -109,3 +111,22 @@ def pasar_pregunta(lista_preguntas:list,indice:int,cuadro_pregunta:dict,lista_re
 #GENERAL (PUEDE SERVIRME EN PYGAME)
 def mezclar_lista(lista_preguntas:list) -> None:
     random.shuffle(lista_preguntas)
+
+def generar_json(nombre_archivo:str,lista:list) -> bool:
+    if type(lista) == list and len(lista) > 0:
+        with open(nombre_archivo,"w") as archivo:
+            json.dump(lista,archivo,indent=4)
+        retorno = True
+    else:
+        retorno = False
+    
+    return retorno
+
+def leer_json(nombre_archivo:str) -> list:
+    lista = []
+    
+    if os.path.exists(nombre_archivo) == True:
+        with open(nombre_archivo,"r") as archivo:
+            lista = json.load(archivo)
+    
+    return lista

@@ -18,13 +18,13 @@ datos_juego = {
     "puntuacion":0,
     "vidas":5,
     "nombre":"",
-    "tiempo_restante":TIEMPO_JUEGO,
     "volumen_musica":0,
-    "indice":0
+    "indice":0,
+    "cantidad_aciertos" : 0
     }
 
-#lista_rankings = cargo el json
-lista_rankings = []
+
+lista_jugadores = [leer_json("Ranking_jugadas.json")] 
 reloj = pygame.time.Clock()
 ventana_actual = "menu"
 
@@ -36,20 +36,17 @@ while corriendo:
     cola_eventos = pygame.event.get()
     
     if ventana_actual == "menu":
+        reiniciar_estadisticas(datos_juego)
         ventana_actual = mostrar_menu(pantalla,cola_eventos)
-        datos_juego["puntuacion"]= 0
-        datos_juego["tiempo_restante"] = TIEMPO_JUEGO
-        datos_juego["vidas"] = 5
-        datos_juego["nombre"] = ""
-
 
     elif ventana_actual == "salir":
         corriendo = False
     elif ventana_actual == "rankings":
-        ventana_actual = mostrar_rankings(pantalla,cola_eventos,lista_rankings)
+        ventana_actual = mostrar_rankings(pantalla,cola_eventos,lista_jugadores)
     elif ventana_actual == "ajustes":
         ventana_actual = mostrar_ajustes(pantalla,cola_eventos,datos_juego)
     elif ventana_actual == "juego":
+
         if bandera_juego == False:
             pygame.mixer.init()
             pygame.mixer.music.load("musica.mp3")
@@ -63,12 +60,11 @@ while corriendo:
         if bandera_juego == True:
             bandera_juego = False
             pygame.mixer.music.stop()
-        ventana_actual = mostrar_fin_juego(pantalla,cola_eventos,datos_juego)
-    
+        ventana_actual = mostrar_fin_juego(pantalla,cola_eventos,datos_juego,lista_jugadores)
 
     
     #print(f"USTED ESTA PARADO EN LA VENTANA: {ventana_actual}")
-    #print(f" {datos_juego['puntuacion']}")
+    #print(f" {datos_juego['nombre']}")
    
 
     
