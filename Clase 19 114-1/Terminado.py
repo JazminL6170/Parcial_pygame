@@ -6,7 +6,7 @@ pygame.init()
 
 fuente = pygame.font.SysFont("Arial Narrow",40)
 cuadro = crear_elemento_juego("textura_respuesta.jpg",250,50,200,200)
-
+fondo_pantalla = pygame.transform.scale(pygame.image.load("foto_final.jpg"),PANTALLA)
 def mostrar_fin_juego(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event],datos_juego:dict) -> str:
     retorno = "terminado"
     for evento in cola_eventos:
@@ -37,7 +37,7 @@ def mostrar_fin_juego(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Eve
             
 
 
-    pantalla.fill(COLOR_BLANCO)
+    pantalla.blit(fondo_pantalla,(0,0))
     pantalla.blit(cuadro["superficie"],cuadro["rectangulo"])
     mostrar_texto(cuadro["superficie"],datos_juego["nombre"],(10,0),fuente,COLOR_BLANCO)
     mostrar_texto(pantalla,f"Usted obtuvo: {datos_juego["puntuacion"]} puntos",(250,100),fuente,COLOR_NEGRO)
