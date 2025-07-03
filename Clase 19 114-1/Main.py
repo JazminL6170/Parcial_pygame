@@ -15,10 +15,10 @@ pantalla = pygame.display.set_mode(PANTALLA)
 corriendo = True
 datos_juego = {
     "puntuacion":0,
-    "vidas":0,
+    "vidas":5,
     "nombre":"",
     "tiempo_restante":TIEMPO_JUEGO,
-    "volumen_musica":0,
+    "volumen_musica":100,
     "indice":0
     }
 
@@ -66,8 +66,9 @@ while corriendo:
     
 
     
-    print(f"USTED ESTA PARADO EN LA VENTANA: {ventana_actual}")
-    print(f" {datos_juego['puntuacion']}")
+    #print(f"USTED ESTA PARADO EN LA VENTANA: {ventana_actual}")
+    #print(f" {datos_juego['puntuacion']}")
+   
 
     
     pygame.display.flip()

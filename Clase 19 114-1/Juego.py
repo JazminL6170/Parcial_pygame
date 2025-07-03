@@ -30,9 +30,9 @@ def mostrar_juego(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event],
             if evento.button == 1:#Quiero que sea click izquierdo 
                 for i in range(len(lista_respuestas)):#Recorro todos los botones de cada respuesta
                     if lista_respuestas[i]["rectangulo"].collidepoint(evento.pos): #Verifico si le hice click a uno
-                        respuesta = (i + 1)
+                        respuesta = str(i + 1)
                         if verificar_respuesta(datos_juego,pregunta_actual,respuesta) == True:
-                            CLICK_SONIDO.play()
+                            ACIERTO_SONIDO.play()
                         else:
                             ERROR_SONIDO.play()
                         
@@ -43,7 +43,7 @@ def mostrar_juego(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event],
                             mezclar_lista(lista_preguntas)
                         
                         pregunta_actual = pasar_pregunta(lista_preguntas,datos_juego["indice"],cuadro_pregunta,lista_respuestas)
-                                        
+                              
     
     pantalla.blit(fondo_pantalla,(0,0))
     pantalla.blit(cuadro_pregunta["superficie"],cuadro_pregunta["rectangulo"])
@@ -71,7 +71,9 @@ def mostrar_juego(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event],
 
     mostrar_texto(pantalla,f"VIDAS: {datos_juego['vidas']}",(10,10),FUENTE_TEXTO,COLOR_NEGRO)
     mostrar_texto(pantalla,f"PUNTUACION: {datos_juego['puntuacion']}",(10,40),FUENTE_TEXTO,COLOR_NEGRO)
-    mostrar_texto(pantalla,f"TIEMPO: {datos_juego['tiempo_restante']} seg",(350,10),FUENTE_TEXTO,COLOR_NEGRO)
-
+    mostrar_texto(pantalla,f"TIEMPO: {datos_juego['tiempo_restante']} seg",(350,10),FUENTE_TEXTO,COLOR_ROJO)
+    
+    #print( f"{pregunta_actual["respuesta_correcta"]}")
+    
     #pygame.draw.rect(pantalla,COLOR_NEGRO,cuadro_pregunta["rectangulo"],3)
     return retorno
