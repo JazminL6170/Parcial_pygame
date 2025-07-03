@@ -21,7 +21,7 @@ def mostrar_rankings(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Even
     pantalla.blit(fondo_pantalla, (0,0))
     
     pantalla.blit(boton_volver["superficie"],boton_volver["rectangulo"])
-    mostrar_texto(pantalla,f"ACA VA EL TOP 10",(150,200),FUENTE_VOLUMEN,COLOR_NEGRO)
+    mostrar_texto(pantalla,f"TOP 10",(200,30),pygame.font.Font("simpson.otf",50), COLOR_BLANCO)
     mostrar_texto(boton_volver["superficie"],"VOLVER",(5,5),FUENTE_RESPUESTA,COLOR_BLANCO)
 
     return retorno
