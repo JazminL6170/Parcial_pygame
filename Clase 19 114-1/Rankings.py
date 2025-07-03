@@ -5,7 +5,7 @@ from Funciones import *
 pygame.init()
 
 boton_volver = crear_elemento_juego("textura_respuesta.jpg",100,40,10,10)
-
+fondo_pantalla = pygame.transform.scale(pygame.image.load("ranking_fondo.jpg"),PANTALLA)
 def mostrar_rankings(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event],lista_rankings:list) -> str:
     retorno = "rankings"
     
@@ -18,7 +18,7 @@ def mostrar_rankings(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Even
                     CLICK_SONIDO.play()
                     retorno = "menu"
     
-    pantalla.fill(COLOR_BLANCO)
+    pantalla.blit(fondo_pantalla, (0,0))
     
     pantalla.blit(boton_volver["superficie"],boton_volver["rectangulo"])
     mostrar_texto(pantalla,f"ACA VA EL TOP 10",(150,200),FUENTE_VOLUMEN,COLOR_NEGRO)
