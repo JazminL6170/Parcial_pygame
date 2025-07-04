@@ -30,6 +30,7 @@ ERROR_SONIDO = pygame.mixer.Sound("error.mp3")
 ACIERTO_SONIDO = pygame.mixer.Sound("sonido_acierto.mp3")
 FUENTE_PREGUNTA = pygame.font.SysFont("timesnewroman",28,True)
 FUENTE_RESPUESTA = pygame.font.SysFont("timesnewroman",20,True)
+FUENTE_RANKING = pygame.font.SysFont("Comic Sans MS ",20,True)
 FUENTE_TEXTO = pygame.font.Font("simpson.otf",30)
 FUENTE_VOLUMEN = pygame.font.SysFont("Arial",50,True)
 

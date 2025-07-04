@@ -24,7 +24,7 @@ datos_juego = {
     }
 
 
-lista_jugadores = [leer_json("Ranking_jugadas.json")] 
+lista_jugadores = leer_json("Ranking_jugadas.json")
 reloj = pygame.time.Clock()
 ventana_actual = "menu"
 
@@ -41,10 +41,14 @@ while corriendo:
 
     elif ventana_actual == "salir":
         corriendo = False
+
     elif ventana_actual == "rankings":
+        lista_jugadores = [leer_json("Ranking_jugadas.json")]
         ventana_actual = mostrar_rankings(pantalla,cola_eventos,lista_jugadores)
+
     elif ventana_actual == "ajustes":
         ventana_actual = mostrar_ajustes(pantalla,cola_eventos,datos_juego)
+
     elif ventana_actual == "juego":
 
         if bandera_juego == False:

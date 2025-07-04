@@ -1,28 +1,46 @@
 [
-    [
-        [
-            [
-                {
-                    "Nombre": "jazchu",
-                    "Puntuacion": 325
-                },
-                {
-                    "Nombre": "luna",
-                    "Puntuacion": -75
-                }
-            ],
-            {
-                "Nombre": "maria",
-                "Puntuacion": -75
-            }
-        ],
-        {
-            "Nombre": "ludmila",
-            "Puntuacion": -75
-        }
-    ],
     {
-        "Nombre": "ona",
+        "Nombre": "jazmin",
+        "Puntuacion": 325
+    },
+    {
+        "Nombre": "micaela",
+        "Puntuacion": 25
+    },
+    {
+        "Nombre": "nina",
+        "Puntuacion": 25
+    },
+    {
+        "Nombre": "miriam",
+        "Puntuacion": 500
+    },
+    {
+        "Nombre": "nina",
+        "Puntuacion": 25
+    },
+    {
+        "Nombre": "ivan",
         "Puntuacion": 125
+    },
+    {
+        "Nombre": "lina",
+        "Puntuacion": 25
+    },
+    {
+        "Nombre": "camila",
+        "Puntuacion": 225
+    },
+    {
+        "Nombre": "jaja",
+        "Puntuacion": -75
+    },
+    {
+        "Nombre": "jujla",
+        "Puntuacion": 125
+    },
+    {
+        "Nombre": "MICHICHI",
+        "Puntuacion": 2125
     }
 ]

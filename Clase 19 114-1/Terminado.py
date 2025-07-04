@@ -34,14 +34,12 @@ def mostrar_fin_juego(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Eve
                     datos_juego["nombre"] += letra_presionada
             if letra_presionada == "return":
                 limpiar_superficie(cuadro,"textura_cuadro_final.jpg",250,50)
-                retorno = "menu"
-                ultimo_jugador = {
-                    "Nombre": datos_juego["nombre"],
-                    "Puntuacion" : datos_juego["puntuacion"]
-                }
-                lista_jugadores.append(ultimo_jugador)
+                lista_jugadores = leer_json("Ranking_jugadas.json")
+                nuevo_jugador = {"Nombre": datos_juego["nombre"], "Puntuacion": datos_juego["puntuacion"]}
+                lista_jugadores.append(nuevo_jugador)
                 generar_json("Ranking_jugadas.json", lista_jugadores)
                 reiniciar_estadisticas(datos_juego)
+                retorno = "menu"
             
 
 

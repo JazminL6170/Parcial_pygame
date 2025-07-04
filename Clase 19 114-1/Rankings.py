@@ -23,13 +23,22 @@ def mostrar_rankings(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Even
     
     pantalla.blit(fondo_pantalla, (0,0))
     datos = lista_rankings
-    for i in lista_rankings:
-      nombre = str(i[0])
-      mostrar_texto(pantalla, nombre, (8,100),FUENTE_TEXTO, COLOR_BLANCO)
+    datos[0].sort(key=lambda jugador: jugador["Puntuacion"], reverse=True)
+
+    y = 80
+    puesto = 1
+    for i in datos[0]:
+      nombre = str(i["Nombre"])
+      puntaje = str(i["Puntuacion"])
+      mostrar_texto(pantalla, f"{puesto}. Nombre : {nombre} - Puntuacion: {puntaje}", (30, y), FUENTE_RANKING, COLOR_BLANCO)
+      y += 40
+      puesto += 1
+      if puesto == 11:
+       break
     
    
     pantalla.blit(boton_volver["superficie"],boton_volver["rectangulo"])
-    mostrar_texto(pantalla,f"TOP 10",(200,30),pygame.font.Font("simpson.otf",50), COLOR_BLANCO)
+    mostrar_texto(pantalla,f"TOP 10",(200,10),pygame.font.Font("simpson.otf",50), COLOR_AMARILLO)
     mostrar_texto(boton_volver["superficie"],"VOLVER",(5,5),FUENTE_RESPUESTA,COLOR_BLANCO)
     pygame.display.flip()
     
