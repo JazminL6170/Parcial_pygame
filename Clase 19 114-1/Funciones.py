@@ -98,7 +98,6 @@ def reiniciar_estadisticas(datos_juego:dict):
     datos_juego["vidas"] = CANTIDAD_VIDAS
     datos_juego["puntuacion"] = 0
     datos_juego["nombre"] = ""
-    datos_juego["tiempo_restante"] = TIEMPO_JUEGO
 
 def pasar_pregunta(lista_preguntas:list,indice:int,cuadro_pregunta:dict,lista_respuestas:list) -> dict:
     pregunta_actual = lista_preguntas[indice]
