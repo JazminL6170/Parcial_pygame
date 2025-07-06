@@ -19,7 +19,7 @@ datos_juego = {
     "puntuacion": 0,
     "vidas": 5,
     "nombre": "",
-    "volumen_musica": 0,
+    "volumen_musica": 5,
     "mute" : False,
     "indice": 0,
     "cantidad_aciertos": 0,
