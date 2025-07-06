@@ -6,6 +6,8 @@ from Funciones import *
 pygame.init()
 
 fondo_pantalla = pygame.transform.scale(pygame.image.load("fondo_juego.jpg"), PANTALLA)
+textura_pregunta = pygame.transform.scale(pygame.image.load("textura_pregunta.jpg"), (350, 150))
+textura_respuesta =  pygame.transform.scale(pygame.image.load("textura_respuestas.jpg"), (250, 60))
 cuadro_pregunta = crear_elemento_juego("textura_pregunta.jpg", ANCHO_PREGUNTA, ALTO_PREGUNTA, 120, 80)
 lista_respuestas = crear_lista_respuestas("textura_respuestas.jpg", ANCHO_BOTON, ALTO_BOTON, 30, 245)
 evento_tiempo = pygame.USEREVENT 
@@ -13,6 +15,7 @@ pygame.time.set_timer(evento_tiempo, 1000)
 
 def mostrar_juego(pantalla: pygame.Surface, cola_eventos: list[pygame.event.Event], datos_juego: dict, lista_preguntas: list) -> str:
     retorno = "juego"
+    
 
     pregunta_actual = lista_preguntas[datos_juego["indice"]]
 
@@ -26,7 +29,7 @@ def mostrar_juego(pantalla: pygame.Surface, cola_eventos: list[pygame.event.Even
         datos_juego["respuestas_visibles"] = [0, 1, 2, 3]
 
     if datos_juego["vidas"] == 0:
-        return "terminado"
+        retorno = "terminado"
 
     respuestas_visibles = datos_juego["respuestas_visibles"]
 
@@ -44,7 +47,7 @@ def mostrar_juego(pantalla: pygame.Surface, cola_eventos: list[pygame.event.Even
 
     for evento in cola_eventos:
         if evento.type == pygame.QUIT:
-            return "salir"
+            retorno = "salir"
 
         elif evento.type == evento_tiempo:
             datos_juego["tiempo_pregunta"] -= 1
@@ -126,11 +129,12 @@ def mostrar_juego(pantalla: pygame.Surface, cola_eventos: list[pygame.event.Even
 
     pantalla.blit(fondo_pantalla, (0, 0))
     pantalla.blit(cuadro_pregunta["superficie"], cuadro_pregunta["rectangulo"])
+    cuadro_pregunta["superficie"].blit(textura_pregunta, (0, 0))
     mostrar_texto(cuadro_pregunta["superficie"], pregunta_actual["pregunta"], (15, 15), FUENTE_PREGUNTA, COLOR_NEGRO)
-
     for i in datos_juego["respuestas_visibles"]:
         if lista_respuestas[i].get("visible", True):
             pantalla.blit(lista_respuestas[i]["superficie"], lista_respuestas[i]["rectangulo"])
+            lista_respuestas[i]["superficie"].blit(textura_respuesta,(0,0))
             mostrar_texto(lista_respuestas[i]["superficie"], pregunta_actual[f"respuesta_{i+1}"], (15, 15), FUENTE_RESPUESTA, COLOR_BLANCO)
 
     pygame.draw.circle(pantalla, COLOR_AMARILLO, (80, 450), 30)
