@@ -69,8 +69,8 @@ def mostrar_juego(pantalla: pygame.Surface, cola_eventos: list[pygame.event.Even
             if boton_volver["rectangulo"].collidepoint(evento.pos):
                     retorno = "menu"
                     CLICK_SONIDO.play()
-                    reiniciar_estadisticas(datos_juego)
                     
+
             elif rect_bomba.collidepoint(evento.pos) and datos_juego["comodines"]["bomba"]:
                 datos_juego["respuestas_visibles"] = aplicar_bomba(pregunta_actual)
                 datos_juego["comodines"]["bomba"] = False

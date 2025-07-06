@@ -40,9 +40,12 @@ def mostrar_ajustes(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event
                     retorno = "menu"
                 elif boton_mute["rectangulo"].collidepoint(evento.pos):
                     datos_juego["volumen_musica"] = 0
+                    pygame.mixer.music.set_volume(0)
                     datos_juego["mute"] = True
                 elif boton_sonido["rectangulo"].collidepoint(evento.pos):
+                    ACTIVAR_SONIDO.play()
                     datos_juego["mute"] = False
+
                     
     
     pantalla.blit(fondo_pantalla,(0,0))

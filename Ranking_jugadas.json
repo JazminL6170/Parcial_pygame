@@ -134,5 +134,9 @@
     {
         "Nombre": "11",
         "Puntuacion": -75
+    },
+    {
+        "Nombre": "aaa",
+        "Puntuacion": -75
     }
 ]
