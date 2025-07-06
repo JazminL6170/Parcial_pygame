@@ -46,5 +46,17 @@
     {
         "Nombre": "ARIEL",
         "Puntuacion": 225
+    },
+    {
+        "Nombre": "AAA",
+        "Puntuacion": 525
+    },
+    {
+        "Nombre": "CRACK",
+        "Puntuacion": 3100
+    },
+    {
+        "Nombre": "H",
+        "Puntuacion": 900
     }
 ]

@@ -56,6 +56,7 @@ def cargar_dificultad(modo : str) -> list:
     parse_csv(lista_preguntas, "Preguntas_faciles.csv")
   elif modo == "lisa":
        parse_csv(lista_preguntas, "Preguntas_dificiles.csv")
+    
 
   return lista_preguntas
   

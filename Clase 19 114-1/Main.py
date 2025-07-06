@@ -57,8 +57,9 @@ while corriendo:
         ventana_actual = mostrar_ajustes(pantalla, cola_eventos, datos_juego)
 
     elif ventana_actual == "juego":
-        lista_preguntas = cargar_dificultad(datos_juego["modo"])
         if bandera_juego == False:
+            lista_preguntas = cargar_dificultad(datos_juego["modo"])
+            mezclar_lista(lista_preguntas)
             bandera_juego = True
 
         ventana_actual = mostrar_juego(pantalla, cola_eventos, datos_juego, lista_preguntas, sonido)
