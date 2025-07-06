@@ -6,7 +6,6 @@ from Configuracion import *
 from Rankings import *
 from Terminado import *
 
-mezclar_lista(lista_preguntas)
 pygame.init()
 pygame.display.set_caption("PREGUNTADOS 114")
 icono = pygame.image.load("icono.png")
@@ -39,7 +38,6 @@ lista_jugadores = leer_json("Ranking_jugadas.json")
 reloj = pygame.time.Clock()
 ventana_actual = "menu"
 bandera_juego = False
-
 while corriendo:
     reloj.tick(FPS)
     cola_eventos = pygame.event.get()
@@ -59,6 +57,7 @@ while corriendo:
         ventana_actual = mostrar_ajustes(pantalla, cola_eventos, datos_juego)
 
     elif ventana_actual == "juego":
+        lista_preguntas = cargar_dificultad(datos_juego["modo"])
         if bandera_juego == False:
             bandera_juego = True
 

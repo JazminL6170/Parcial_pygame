@@ -50,9 +50,15 @@ def parse_csv(lista_elementos,nombre_archivo:str) -> bool:
     else:
         return False
 
+def cargar_dificultad(modo : str) -> list:
+  lista_preguntas = []
+  if modo == "bart":
+    parse_csv(lista_preguntas, "Preguntas_faciles.csv")
+  elif modo == "lisa":
+       parse_csv(lista_preguntas, "Preguntas_dificiles.csv")
 
-lista_preguntas = []
-parse_csv(lista_preguntas, "Preguntas_faciles.csv")
+  return lista_preguntas
+  
 
 
 

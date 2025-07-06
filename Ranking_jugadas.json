@@ -14,5 +14,33 @@
     {
         "Nombre": "miriam",
         "Puntuacion": 500
+    },
+    {
+        "Nombre": "",
+        "Puntuacion": -75
+    },
+    {
+        "Nombre": "jaz",
+        "Puntuacion": 25
+    },
+    {
+        "Nombre": "milo",
+        "Puntuacion": 25
+    },
+    {
+        "Nombre": "aa",
+        "Puntuacion": 25
+    },
+    {
+        "Nombre": "ivan",
+        "Puntuacion": 525
+    },
+    {
+        "Nombre": "OLA",
+        "Puntuacion": 25
+    },
+    {
+        "Nombre": "ONA",
+        "Puntuacion": 1650
     }
 ]
