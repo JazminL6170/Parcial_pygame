@@ -15,42 +15,46 @@ pygame.display.set_icon(icono)
 pantalla = pygame.display.set_mode(PANTALLA)
 corriendo = True
 datos_juego = {
-    "puntuacion":0,
-    "vidas":5,
-    "nombre":"",
-    "volumen_musica":0,
-    "indice":0,
-    "cantidad_aciertos" : 0
+    "puntuacion": 0,
+    "vidas": 5,
+    "nombre": "",
+    "volumen_musica": 0,
+    "indice": 0,
+    "cantidad_aciertos": 0,
+    "doble_chance_activado": False,
+    "por_dos_activado": False,
+    "comodines": {
+        "bomba": True,
+        "por_dos": True,
+        "doble_chance": True,
+        "pasar": True
     }
-
+}
 
 lista_jugadores = leer_json("Ranking_jugadas.json")
 reloj = pygame.time.Clock()
 ventana_actual = "menu"
-
 bandera_juego = False
 
 while corriendo:
     reloj.tick(FPS)
-    #El manejo de eventos no lo hacemos aca, pero tenemos que generar la cola de eventos
     cola_eventos = pygame.event.get()
-    
+
     if ventana_actual == "menu":
         reiniciar_estadisticas(datos_juego)
-        ventana_actual = mostrar_menu(pantalla,cola_eventos)
+        ventana_actual = mostrar_menu(pantalla, cola_eventos)
 
     elif ventana_actual == "salir":
         corriendo = False
 
     elif ventana_actual == "rankings":
         lista_jugadores = [leer_json("Ranking_jugadas.json")]
-        ventana_actual = mostrar_rankings(pantalla,cola_eventos,lista_jugadores)
+        ventana_actual = mostrar_rankings(pantalla, cola_eventos, lista_jugadores)
 
     elif ventana_actual == "ajustes":
-        ventana_actual = mostrar_ajustes(pantalla,cola_eventos,datos_juego)
+        ventana_actual = mostrar_ajustes(pantalla, cola_eventos, datos_juego)
 
     elif ventana_actual == "juego":
-
         if bandera_juego == False:
             pygame.mixer.init()
             pygame.mixer.music.load("musica.mp3")
@@ -58,20 +62,15 @@ while corriendo:
             pygame.mixer.music.set_volume(porcentaje_musica)
             pygame.mixer.music.play(-1)
             bandera_juego = True
-        
-        ventana_actual = mostrar_juego(pantalla,cola_eventos,datos_juego,lista_preguntas)
+
+        ventana_actual = mostrar_juego(pantalla, cola_eventos, datos_juego, lista_preguntas)
+
     elif ventana_actual == "terminado":
         if bandera_juego == True:
             bandera_juego = False
             pygame.mixer.music.stop()
-        ventana_actual = mostrar_fin_juego(pantalla,cola_eventos,datos_juego,lista_jugadores)
+        ventana_actual = mostrar_fin_juego(pantalla, cola_eventos, datos_juego, lista_jugadores)
 
-    
-    #print(f"USTED ESTA PARADO EN LA VENTANA: {ventana_actual}")
-    #print(f" {datos_juego['nombre']}")
-   
-
-    
     pygame.display.flip()
 
 pygame.quit()
