@@ -9,6 +9,8 @@ cuadro = crear_elemento_juego("textura_cuadro_final.jpg",250,50,20,190)
 fondo_pantalla = pygame.transform.scale(pygame.image.load("foto_final.jpg"),PANTALLA)
 def mostrar_fin_juego(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event],datos_juego:dict, lista_jugadores: list) -> str:
     retorno = "terminado"
+    pygame.mixer.music.set_volume(0)
+
     for evento in cola_eventos:
         if evento.type == pygame.QUIT:
             #Estaria bueno forzarle al usuario que no pueda salir del juego hasta que guarde la puntuacion -> A gusto de ustedes
