@@ -67,7 +67,6 @@ while corriendo:
     elif ventana_actual == "terminado":
         if bandera_juego == True:
             bandera_juego = False
-            pygame.mixer.music.stop()
         ventana_actual = mostrar_fin_juego(pantalla, cola_eventos, datos_juego, lista_jugadores)
 
     pygame.display.flip()

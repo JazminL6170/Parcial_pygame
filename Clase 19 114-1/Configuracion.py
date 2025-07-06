@@ -56,6 +56,7 @@ def mostrar_ajustes(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event
                       pygame.mixer.music.load("musica.mp3")
                       pygame.mixer.music.play(-1)
                       datos_juego["musica_activada"] = True
+                      datos_juego["mute"] = False
 
                     datos_juego["volumen_musica"] = 25
                     pygame.mixer.music.set_volume(25 / 100)

@@ -170,5 +170,45 @@
     {
         "Nombre": "aaa",
         "Puntuacion": -75
+    },
+    {
+        "Nombre": "milo",
+        "Puntuacion": -75
+    },
+    {
+        "Nombre": "mila",
+        "Puntuacion": -75
+    },
+    {
+        "Nombre": "zzz",
+        "Puntuacion": 125
+    },
+    {
+        "Nombre": "mm",
+        "Puntuacion": 225
+    },
+    {
+        "Nombre": "mm",
+        "Puntuacion": 225
+    },
+    {
+        "Nombre": "sss",
+        "Puntuacion": 25
+    },
+    {
+        "Nombre": "aaaa",
+        "Puntuacion": 25
+    },
+    {
+        "Nombre": "aa",
+        "Puntuacion": 25
+    },
+    {
+        "Nombre": "aaa",
+        "Puntuacion": 325
+    },
+    {
+        "Nombre": "aa",
+        "Puntuacion": 25
     }
 ]
