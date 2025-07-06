@@ -130,7 +130,7 @@ def mostrar_juego(pantalla: pygame.Surface, cola_eventos: list[pygame.event.Even
     pantalla.blit(fondo_pantalla, (0, 0))
     pantalla.blit(cuadro_pregunta["superficie"], cuadro_pregunta["rectangulo"])
     cuadro_pregunta["superficie"].blit(textura_pregunta, (0, 0))
-    mostrar_texto(cuadro_pregunta["superficie"], pregunta_actual["pregunta"], (15, 15), FUENTE_PREGUNTA, COLOR_NEGRO)
+    mostrar_texto(cuadro_pregunta["superficie"], pregunta_actual["pregunta"], (15, 15), FUENTE_GENERAL, COLOR_NEGRO)
     for i in datos_juego["respuestas_visibles"]:
         if lista_respuestas[i].get("visible", True):
             pantalla.blit(lista_respuestas[i]["superficie"], lista_respuestas[i]["rectangulo"])
@@ -153,7 +153,7 @@ def mostrar_juego(pantalla: pygame.Surface, cola_eventos: list[pygame.event.Even
     pantalla.blit(imagen_pasar, rect_pasar)
 
     mostrar_texto(pantalla, f"VIDAS: {datos_juego['vidas']}", (10, 10), FUENTE_TEXTO, COLOR_NEGRO)
-    mostrar_texto(pantalla, f"PUNTUACION: {datos_juego['puntuacion']}", (10, 40), FUENTE_TEXTO, COLOR_NEGRO)
+    mostrar_texto(pantalla, f"PUNTUACION: {datos_juego['puntuacion']}", (10, 40), FUENTE_RANKING, COLOR_NEGRO)
     mostrar_texto(pantalla, f"TIEMPO: {datos_juego['tiempo_pregunta']} seg", (350, 10), FUENTE_TEXTO, COLOR_ROJO)
 
     return retorno

@@ -50,6 +50,7 @@ def parse_csv(lista_elementos,nombre_archivo:str) -> bool:
     else:
         return False
 
+
 lista_preguntas = []
 parse_csv(lista_preguntas, "Preguntas_faciles.csv")
 
