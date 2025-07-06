@@ -90,5 +90,45 @@
     {
         "Nombre": "aaa",
         "Puntuacion": 325
+    },
+    {
+        "Nombre": "jaz",
+        "Puntuacion": -75
+    },
+    {
+        "Nombre": "jaz",
+        "Puntuacion": 25
+    },
+    {
+        "Nombre": "milo",
+        "Puntuacion": 325
+    },
+    {
+        "Nombre": "sass",
+        "Puntuacion": -75
+    },
+    {
+        "Nombre": "sss",
+        "Puntuacion": 125
+    },
+    {
+        "Nombre": "ssss",
+        "Puntuacion": 225
+    },
+    {
+        "Nombre": "sss",
+        "Puntuacion": 125
+    },
+    {
+        "Nombre": "sss",
+        "Puntuacion": -75
+    },
+    {
+        "Nombre": "sss",
+        "Puntuacion": -75
+    },
+    {
+        "Nombre": "eeee",
+        "Puntuacion": -75
     }
 ]

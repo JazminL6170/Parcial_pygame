@@ -11,6 +11,7 @@ pygame.init()
 pygame.display.set_caption("PREGUNTADOS 114")
 icono = pygame.image.load("icono.png")
 pygame.display.set_icon(icono)
+sonido = True
 
 pantalla = pygame.display.set_mode(PANTALLA)
 corriendo = True
@@ -19,6 +20,7 @@ datos_juego = {
     "vidas": 5,
     "nombre": "",
     "volumen_musica": 0,
+    "mute" : False,
     "indice": 0,
     "cantidad_aciertos": 0,
     "doble_chance_activado": False,
@@ -63,7 +65,7 @@ while corriendo:
             pygame.mixer.music.play(-1)
             bandera_juego = True
 
-        ventana_actual = mostrar_juego(pantalla, cola_eventos, datos_juego, lista_preguntas)
+        ventana_actual = mostrar_juego(pantalla, cola_eventos, datos_juego, lista_preguntas, sonido)
 
     elif ventana_actual == "terminado":
         if bandera_juego == True:

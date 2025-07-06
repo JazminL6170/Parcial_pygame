@@ -13,7 +13,7 @@ lista_respuestas = crear_lista_respuestas("textura_respuestas.jpg", ANCHO_BOTON,
 evento_tiempo = pygame.USEREVENT 
 pygame.time.set_timer(evento_tiempo, 1000)
 
-def mostrar_juego(pantalla: pygame.Surface, cola_eventos: list[pygame.event.Event], datos_juego: dict, lista_preguntas: list) -> str:
+def mostrar_juego(pantalla: pygame.Surface, cola_eventos: list[pygame.event.Event], datos_juego: dict, lista_preguntas: list, sonido: bool) -> str:
     retorno = "juego"
     
 
@@ -46,6 +46,7 @@ def mostrar_juego(pantalla: pygame.Surface, cola_eventos: list[pygame.event.Even
     rect_pasar = imagen_pasar.get_rect(center=(500, 450))
 
     for evento in cola_eventos:
+
         if evento.type == pygame.QUIT:
             retorno = "salir"
 
@@ -94,7 +95,8 @@ def mostrar_juego(pantalla: pygame.Surface, cola_eventos: list[pygame.event.Even
                     resultado = verificar_respuesta(datos_juego, pregunta_actual, respuesta)
 
                     if resultado == "correcta":
-                        ACIERTO_SONIDO.play()
+                        if datos_juego["mute"] == False:
+                          ACIERTO_SONIDO.play()
                         datos_juego["cantidad_aciertos"] += 1
                         if datos_juego["cantidad_aciertos"] == 5:
                             datos_juego["vidas"] += 1
@@ -102,12 +104,14 @@ def mostrar_juego(pantalla: pygame.Surface, cola_eventos: list[pygame.event.Even
                         avanzar = True
 
                     elif resultado == "doble_chance":
-                        ERROR_SONIDO.play()
+                        if datos_juego["mute"] == False:
+                          ERROR_SONIDO.play()
                         lista_respuestas[i]["visible"] = False
                         avanzar = False
 
                     elif resultado == "incorrecta":
-                        ERROR_SONIDO.play()
+                        if datos_juego["mute"] == False:
+                          ERROR_SONIDO.play()
                         datos_juego["cantidad_aciertos"] = 0
                         avanzar = True
 

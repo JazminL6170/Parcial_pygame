@@ -4,10 +4,11 @@ from Funciones import *
 
 pygame.init()
 
-boton_suma = crear_elemento_juego("mas.webp",40,40,350,200)
+boton_suma = crear_elemento_juego("mas.webp",40,40,320,200)
 boton_resta = crear_elemento_juego("menos.webp",40,40,100,200)
 boton_volver = crear_elemento_juego("textura_respuesta.jpg",100,40,10,10)
-boton_mute= crear_elemento_juego("mute.png",40,40,420,200)
+boton_mute= crear_elemento_juego("mute.png",40,40,400,200)
+boton_sonido = crear_elemento_juego("sonido.png",68,68,440,187)
 
 fondo_pantalla = pygame.transform.scale(pygame.image.load("fondo.jpg"),PANTALLA)
 
@@ -39,6 +40,10 @@ def mostrar_ajustes(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event
                     retorno = "menu"
                 elif boton_mute["rectangulo"].collidepoint(evento.pos):
                     datos_juego["volumen_musica"] = 0
+                    datos_juego["mute"] = True
+                elif boton_sonido["rectangulo"].collidepoint(evento.pos):
+                    datos_juego["mute"] = False
+                    
     
     pantalla.blit(fondo_pantalla,(0,0))
     
@@ -46,6 +51,7 @@ def mostrar_ajustes(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event
     pantalla.blit(boton_resta["superficie"],boton_resta["rectangulo"])
     pantalla.blit(boton_volver["superficie"],boton_volver["rectangulo"])
     pantalla.blit(boton_mute["superficie"],boton_mute["rectangulo"])
+    pantalla.blit(boton_sonido["superficie"],boton_sonido["rectangulo"])
 
     mostrar_texto(pantalla,"Configuracion de Juego",(100,80),FUENTE_TEXTO,COLOR_AMARILLO)
     mostrar_texto(pantalla,"Volumen",(90,150),FUENTE_TEXTO,COLOR_BLANCO)
