@@ -25,13 +25,18 @@ def mostrar_ajustes(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event
             if evento.button == 1:
                 if boton_suma["rectangulo"].collidepoint(evento.pos):
                     if datos_juego["volumen_musica"] <= 95:
-                        datos_juego["volumen_musica"] += 5
-                        CLICK_SONIDO.play()
+                        if datos_juego["musica_activada"] == True:
+                          datos_juego["volumen_musica"] += 25
+                          datos_juego["mute"] = False
+                          CLICK_SONIDO.play()
+                          pygame.mixer.music.set_volume(datos_juego["volumen_musica"] / 100)
+
                     else:
                         ERROR_SONIDO.play()
                 elif boton_resta["rectangulo"].collidepoint(evento.pos):
                     if datos_juego["volumen_musica"] > 0:
-                        datos_juego["volumen_musica"] -= 5
+                        datos_juego["volumen_musica"] -= 25
+                        pygame.mixer.music.set_volume(datos_juego["volumen_musica"] / 100)
                         CLICK_SONIDO.play()
                     else: 
                         ERROR_SONIDO.play()
@@ -40,12 +45,19 @@ def mostrar_ajustes(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event
                     retorno = "menu"
                 elif boton_mute["rectangulo"].collidepoint(evento.pos):
                     datos_juego["volumen_musica"] = 0
+                    datos_juego["musica_activada"] = False
                     pygame.mixer.music.set_volume(0)
                     datos_juego["mute"] = True
                 elif boton_sonido["rectangulo"].collidepoint(evento.pos):
                     ACTIVAR_SONIDO.play()
-                    datos_juego["mute"] = False
+                    if not datos_juego["musica_activada"]:
+                      pygame.mixer.music.load("musica.mp3")
+                      pygame.mixer.music.play(-1)
+                      datos_juego["musica_activada"] = True
 
+                    datos_juego["volumen_musica"] = 25
+                    pygame.mixer.music.set_volume(25 / 100)
+                    datos_juego["mute"] = False
                     
     
     pantalla.blit(fondo_pantalla,(0,0))

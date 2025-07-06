@@ -162,5 +162,13 @@
     {
         "Nombre": "moim",
         "Puntuacion": 125
+    },
+    {
+        "Nombre": "aaa",
+        "Puntuacion": -75
+    },
+    {
+        "Nombre": "aaa",
+        "Puntuacion": -75
     }
 ]

@@ -16,7 +16,7 @@ pygame.time.set_timer(evento_tiempo, 1000)
 
 def mostrar_juego(pantalla: pygame.Surface, cola_eventos: list[pygame.event.Event], datos_juego: dict, lista_preguntas: list, sonido: bool) -> str:
     retorno = "juego"
-    
+    pygame.mixer.music.set_volume(datos_juego["volumen_musica"] / 100)
 
     pregunta_actual = lista_preguntas[datos_juego["indice"]]
 

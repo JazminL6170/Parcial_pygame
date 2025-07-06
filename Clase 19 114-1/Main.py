@@ -19,8 +19,9 @@ datos_juego = {
     "puntuacion": 0,
     "vidas": 5,
     "nombre": "",
-    "volumen_musica": 5,
+    "volumen_musica": 0,
     "mute" : False,
+    "musica_activada" : False,
     "indice": 0,
     "cantidad_aciertos": 0,
     "doble_chance_activado": False,
@@ -58,11 +59,6 @@ while corriendo:
 
     elif ventana_actual == "juego":
         if bandera_juego == False:
-            pygame.mixer.init()
-            pygame.mixer.music.load("musica.mp3")
-            porcentaje_musica = datos_juego["volumen_musica"] / 100
-            pygame.mixer.music.set_volume(porcentaje_musica)
-            pygame.mixer.music.play(-1)
             bandera_juego = True
 
         ventana_actual = mostrar_juego(pantalla, cola_eventos, datos_juego, lista_preguntas, sonido)
