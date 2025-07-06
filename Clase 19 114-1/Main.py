@@ -23,6 +23,7 @@ datos_juego = {
     "mute" : False,
     "musica_activada" : False,
     "indice": 0,
+    "modo": "bart",
     "cantidad_aciertos": 0,
     "doble_chance_activado": False,
     "por_dos_activado": False,
