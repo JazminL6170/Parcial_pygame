@@ -72,4 +72,4 @@ while corriendo:
 
     pygame.display.flip()
 
-#pygame.quit()
+pygame.quit()
