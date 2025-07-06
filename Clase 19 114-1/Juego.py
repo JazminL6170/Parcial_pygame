@@ -57,9 +57,9 @@ def mostrar_juego(pantalla: pygame.Surface, cola_eventos: list[pygame.event.Even
             if datos_juego["tiempo_pregunta"] <= 0:
                 datos_juego["vidas"] -= 1
                 datos_juego["indice"] += 1
-                if datos_juego["indice"] >= len(lista_preguntas):
-                    datos_juego["indice"] = 0
-                    mezclar_lista(lista_preguntas)
+                if datos_juego["indice"] >= CANTIDAD_MAXIMA_PREGUNTAS:
+                    retorno = "terminado"
+                    break
                 datos_juego["tiempo_pregunta"] = 20
                 datos_juego["respuestas_visibles"] = [0, 1, 2, 3]
                 datos_juego["doble_chance_activado"] = False
@@ -87,9 +87,9 @@ def mostrar_juego(pantalla: pygame.Surface, cola_eventos: list[pygame.event.Even
             elif rect_pasar.collidepoint(evento.pos) and datos_juego["comodines"]["pasar"]:
                 datos_juego["comodines"]["pasar"] = False
                 datos_juego["indice"] += 1
-                if datos_juego["indice"] >= len(lista_preguntas):
-                    datos_juego["indice"] = 0
-                    mezclar_lista(lista_preguntas)
+                if datos_juego["indice"] >= CANTIDAD_MAXIMA_PREGUNTAS:
+                    retorno = "terminado"
+                    break
                 datos_juego["tiempo_pregunta"] = 20
                 datos_juego["respuestas_visibles"] = [0, 1, 2, 3]
                 datos_juego["doble_chance_activado"] = False
@@ -127,9 +127,9 @@ def mostrar_juego(pantalla: pygame.Surface, cola_eventos: list[pygame.event.Even
 
                     if avanzar:
                         datos_juego["indice"] += 1
-                        if datos_juego["indice"] >= len(lista_preguntas):
-                            datos_juego["indice"] = 0
-                            mezclar_lista(lista_preguntas)
+                        if datos_juego["indice"] >= CANTIDAD_MAXIMA_PREGUNTAS:
+                            retorno = "terminado"
+                            break
                         datos_juego["tiempo_pregunta"] = 20
                         datos_juego["respuestas_visibles"] = [0, 1, 2, 3]
                         for r in lista_respuestas:
