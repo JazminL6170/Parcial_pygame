@@ -9,8 +9,8 @@ boton_resta = crear_elemento_juego("menos.webp",40,40,100,200)
 boton_volver = crear_elemento_juego("textura_respuesta.jpg",100,40,10,10)
 boton_mute= crear_elemento_juego("mute.png",40,40,400,200)
 boton_sonido = crear_elemento_juego("sonido.png",68,68,440,187)
-boton_modo_bart = crear_elemento_juego("modo_bart.png",100,122,100,300)
-boton_modo_lisa = crear_elemento_juego("modo_lisa.png",100,122,260,300)
+boton_modo_bart = crear_elemento_juego("modo_bart.png",73,110,150,300)
+boton_modo_lisa = crear_elemento_juego("modo_lisa.png",130,110,290,300)
 
 fondo_pantalla = pygame.transform.scale(pygame.image.load("fondo.jpg"),PANTALLA)
 
