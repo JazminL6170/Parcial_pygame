@@ -6,6 +6,7 @@ from Funciones import *
 pygame.init()
 
 fondo_pantalla = pygame.transform.scale(pygame.image.load("fondo_juego.jpg"), PANTALLA)
+boton_volver = crear_elemento_juego("textura_respuesta.jpg",95,40,240,430)
 textura_pregunta = pygame.transform.scale(pygame.image.load("textura_pregunta.jpg"), (350, 150))
 textura_respuesta =  pygame.transform.scale(pygame.image.load("textura_respuestas.jpg"), (250, 60))
 cuadro_pregunta = crear_elemento_juego("textura_pregunta.jpg", ANCHO_PREGUNTA, ALTO_PREGUNTA, 120, 80)
@@ -37,10 +38,10 @@ def mostrar_juego(pantalla: pygame.Surface, cola_eventos: list[pygame.event.Even
     rect_bomba = imagen_bomba.get_rect(center=(80, 450))
 
     imagen_doble_chance = pygame.transform.scale(pygame.image.load("doble_chance.png"), (40, 40))
-    rect_doble_chance = imagen_doble_chance.get_rect(center=(200, 450))
+    rect_doble_chance = imagen_doble_chance.get_rect(center=(180, 450))
 
     imagen_por_dos = pygame.transform.scale(pygame.image.load("por_dos.png"), (40, 40))
-    rect_por_dos = imagen_por_dos.get_rect(center=(380, 450))
+    rect_por_dos = imagen_por_dos.get_rect(center=(400, 450))
 
     imagen_pasar = pygame.transform.scale(pygame.image.load("pasar.png"), (40, 40))
     rect_pasar = imagen_pasar.get_rect(center=(500, 450))
@@ -65,7 +66,12 @@ def mostrar_juego(pantalla: pygame.Surface, cola_eventos: list[pygame.event.Even
                 pregunta_actual = pasar_pregunta(lista_preguntas, datos_juego["indice"], cuadro_pregunta, lista_respuestas)
 
         elif evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
-            if rect_bomba.collidepoint(evento.pos) and datos_juego["comodines"]["bomba"]:
+            if boton_volver["rectangulo"].collidepoint(evento.pos):
+                    retorno = "menu"
+                    CLICK_SONIDO.play()
+                    reiniciar_estadisticas(datos_juego)
+                    
+            elif rect_bomba.collidepoint(evento.pos) and datos_juego["comodines"]["bomba"]:
                 datos_juego["respuestas_visibles"] = aplicar_bomba(pregunta_actual)
                 datos_juego["comodines"]["bomba"] = False
 
@@ -142,8 +148,8 @@ def mostrar_juego(pantalla: pygame.Surface, cola_eventos: list[pygame.event.Even
             mostrar_texto(lista_respuestas[i]["superficie"], pregunta_actual[f"respuesta_{i+1}"], (15, 15), FUENTE_RESPUESTA, COLOR_BLANCO)
 
     pygame.draw.circle(pantalla, COLOR_AMARILLO, (80, 450), 30)
-    pygame.draw.circle(pantalla, COLOR_AMARILLO, (200, 450), 30)
-    pygame.draw.circle(pantalla, COLOR_AMARILLO, (380, 450), 30)
+    pygame.draw.circle(pantalla, COLOR_AMARILLO, (180, 450), 30)
+    pygame.draw.circle(pantalla, COLOR_AMARILLO, (400, 450), 30)
     pygame.draw.circle(pantalla, COLOR_AMARILLO, (500, 450), 30)
 
     imagen_bomba.set_alpha(255 if datos_juego["comodines"]["bomba"] else 80)
@@ -155,7 +161,9 @@ def mostrar_juego(pantalla: pygame.Surface, cola_eventos: list[pygame.event.Even
     pantalla.blit(imagen_doble_chance, rect_doble_chance)
     pantalla.blit(imagen_por_dos, rect_por_dos)
     pantalla.blit(imagen_pasar, rect_pasar)
+    pantalla.blit(boton_volver["superficie"],boton_volver["rectangulo"])
 
+    mostrar_texto(boton_volver["superficie"],"VOLVER",(5,5),FUENTE_RESPUESTA,COLOR_BLANCO)
     mostrar_texto(pantalla, f"VIDAS: {datos_juego['vidas']}", (10, 10), FUENTE_TEXTO, COLOR_NEGRO)
     mostrar_texto(pantalla, f"PUNTUACION: {datos_juego['puntuacion']}", (10, 40), FUENTE_RANKING, COLOR_NEGRO)
     mostrar_texto(pantalla, f"TIEMPO: {datos_juego['tiempo_pregunta']} seg", (350, 10), FUENTE_TEXTO, COLOR_ROJO)
