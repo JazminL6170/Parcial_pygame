@@ -9,6 +9,8 @@ boton_resta = crear_elemento_juego("menos.webp",40,40,100,200)
 boton_volver = crear_elemento_juego("textura_respuesta.jpg",100,40,10,10)
 boton_mute= crear_elemento_juego("mute.png",40,40,400,200)
 boton_sonido = crear_elemento_juego("sonido.png",68,68,440,187)
+boton_modo_bart = crear_elemento_juego("modo_bart.png",100,122,100,300)
+boton_modo_lisa = crear_elemento_juego("modo_lisa.png",100,122,260,300)
 
 fondo_pantalla = pygame.transform.scale(pygame.image.load("fondo.jpg"),PANTALLA)
 
@@ -45,7 +47,12 @@ def mostrar_ajustes(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event
                 elif boton_sonido["rectangulo"].collidepoint(evento.pos):
                     ACTIVAR_SONIDO.play()
                     datos_juego["mute"] = False
-
+                elif boton_modo_bart["rectangulo"].collidepoint(evento.pos):
+                    datos_juego["modo"] = "bart"
+                    CLICK_SONIDO.play()
+                elif boton_modo_lisa["rectangulo"].collidepoint(evento.pos):
+                    datos_juego["modo"] = "lisa"
+                    CLICK_SONIDO.play()
                     
     
     pantalla.blit(fondo_pantalla,(0,0))
@@ -55,11 +62,14 @@ def mostrar_ajustes(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event
     pantalla.blit(boton_volver["superficie"],boton_volver["rectangulo"])
     pantalla.blit(boton_mute["superficie"],boton_mute["rectangulo"])
     pantalla.blit(boton_sonido["superficie"],boton_sonido["rectangulo"])
+    pantalla.blit(boton_modo_bart["superficie"],boton_modo_bart["rectangulo"])
+    pantalla.blit(boton_modo_lisa["superficie"],boton_modo_lisa["rectangulo"])
 
     mostrar_texto(pantalla,"Configuracion de Juego",(100,80),FUENTE_TEXTO,COLOR_AMARILLO)
     mostrar_texto(pantalla,"Volumen",(90,150),FUENTE_TEXTO,COLOR_BLANCO)
     mostrar_texto(pantalla,f"{datos_juego["volumen_musica"]} %",(220,190),FUENTE_TEXTO,COLOR_BLANCO)
     mostrar_texto(boton_volver["superficie"],"VOLVER",(5,5),FUENTE_RESPUESTA,COLOR_BLANCO)
+    mostrar_texto(pantalla,"Dificultad:",(90,260),FUENTE_RESPUESTA,COLOR_BLANCO)
 
     return retorno
     
