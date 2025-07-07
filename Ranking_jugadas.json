@@ -50,5 +50,21 @@
     {
         "Nombre": "HOLA MUNDO",
         "Puntuacion": 125
+    },
+    {
+        "Nombre": "NJNJ",
+        "Puntuacion": 325
+    },
+    {
+        "Nombre": "MOMO",
+        "Puntuacion": 25
+    },
+    {
+        "Nombre": "AGUS",
+        "Puntuacion": 25
+    },
+    {
+        "Nombre": "MARIAN",
+        "Puntuacion": -75
     }
 ]
