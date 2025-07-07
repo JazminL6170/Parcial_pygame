@@ -149,7 +149,7 @@ def verificar_respuesta(datos_juego: dict, pregunta_actual: dict, respuesta: str
         else:
             datos_juego["puntuacion"] -= PUNTUACION_ERROR
             datos_juego["vidas"] -= 1
-            retorno = "correcta"
+            retorno = "incorrecta"
     return retorno
 
 def reiniciar_estadisticas(datos_juego: dict) -> None:
