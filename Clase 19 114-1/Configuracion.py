@@ -15,13 +15,23 @@ boton_modo_lisa = crear_elemento_juego("modo_lisa.png",110,100,280,300)
 fondo_pantalla = pygame.transform.scale(pygame.image.load("fondo.jpg"),PANTALLA)
 
 def mostrar_ajustes(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event],datos_juego:dict) -> str:
+    """
+    Maneja ls pantalla para controlar los ajustes.
+
+    Args:
+        pantalla (pygame.Surface): Área a distribuir el contenido.
+        cola_eventos (list[pygame.event.Event]): Lista con los pasos a ejecutar.
+        datos_juego (dict): Diccionario con los datos del juego a modificar.
+
+    Returns:
+        str: "retorno"
+    """
     retorno = "ajustes"
     
     for evento in cola_eventos:
         if evento.type == pygame.QUIT:
             retorno = "salir"
         elif evento.type == pygame.KEYDOWN:
-            #QUE VUELVA AL MENU CUANDO TOCO LA TECLA ESC
             pass
         elif evento.type == pygame.MOUSEBUTTONDOWN:
             if evento.button == 1:
@@ -93,6 +103,3 @@ def mostrar_ajustes(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event
 
 
     return retorno
-    
-
-#def manejar_botones_ajustes()

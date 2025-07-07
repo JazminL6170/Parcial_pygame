@@ -8,6 +8,14 @@ fondo_pantalla = pygame.transform.scale(pygame.image.load("fondo.jpg"),PANTALLA)
 
 
 def mostrar_menu(pantlla:pygame.Surface,cola_eventos:list[pygame.event.Event]) -> str:
+
+    """
+    Muestra el menú con las futuras pantallas.
+
+    Returns:
+        _type_: retorno
+    """
+
     retorno = "menu"
     pygame.mixer.music.set_volume(0)
     
@@ -39,5 +47,3 @@ def mostrar_menu(pantlla:pygame.Surface,cola_eventos:list[pygame.event.Event]) -
 
 
     return retorno
-    
-    

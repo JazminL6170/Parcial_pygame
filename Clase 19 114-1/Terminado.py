@@ -72,7 +72,7 @@ def mostrar_fin_juego(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Eve
 
 
             if letra_presionada == "backspace" and len(datos_juego["nombre"]) > 0:
-                datos_juego["nombre"] = datos_juego["nombre"][0:-1]#Elimino el ultimo
+                datos_juego["nombre"] = datos_juego["nombre"][0:-1]
                 print(datos_juego["nombre"])
                 limpiar_superficie(cuadro,"textura_cuadro_final.jpg",250,50)
             

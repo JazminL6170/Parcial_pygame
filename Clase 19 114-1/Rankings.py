@@ -75,4 +75,3 @@ def mostrar_rankings(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Even
     pygame.display.flip()
     
     return retorno
-
