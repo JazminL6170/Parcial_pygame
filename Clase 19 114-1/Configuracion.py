@@ -86,7 +86,7 @@ def mostrar_ajustes(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event
     mostrar_texto(pantalla,"Configuracion de Juego",(100,80),FUENTE_TEXTO,COLOR_AMARILLO)
     mostrar_texto(pantalla,"Volumen",(90,150),FUENTE_TEXTO,COLOR_BLANCO)
     mostrar_texto(pantalla,f"{datos_juego["volumen_musica"]} %",(220,190),FUENTE_TEXTO,COLOR_BLANCO)
-    mostrar_texto(boton_volver["superficie"],"VOLVER",(5,5),FUENTE_RESPUESTA,COLOR_BLANCO)
+    mostrar_texto(boton_volver["superficie"],"VOLVER",(5,5),FUENTE_BOTON,COLOR_BLANCO)
     mostrar_texto(pantalla,"Dificultad:",(90,260),FUENTE_TEXTO,COLOR_BLANCO)
 
 

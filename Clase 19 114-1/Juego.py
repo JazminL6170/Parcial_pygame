@@ -146,7 +146,7 @@ def mostrar_juego(pantalla: pygame.Surface, cola_eventos: list[pygame.event.Even
         if lista_respuestas[i].get("visible", True):
             pantalla.blit(lista_respuestas[i]["superficie"], lista_respuestas[i]["rectangulo"])
             lista_respuestas[i]["superficie"].blit(textura_respuesta,(0,0))
-            mostrar_texto(lista_respuestas[i]["superficie"], pregunta_actual[f"respuesta_{i+1}"], (15, 15), FUENTE_RESPUESTA, COLOR_BLANCO)
+            mostrar_texto(lista_respuestas[i]["superficie"], pregunta_actual[f"respuesta_{i+1}"], (15, 15), FUENTE_GENERAL, COLOR_BLANCO)
 
     pygame.draw.circle(pantalla, COLOR_AMARILLO, (80, 450), 30)
     pygame.draw.circle(pantalla, COLOR_AMARILLO, (180, 450), 30)
@@ -164,9 +164,9 @@ def mostrar_juego(pantalla: pygame.Surface, cola_eventos: list[pygame.event.Even
     pantalla.blit(imagen_pasar, rect_pasar)
     pantalla.blit(boton_volver["superficie"],boton_volver["rectangulo"])
 
-    mostrar_texto(boton_volver["superficie"],"VOLVER",(5,5),FUENTE_RESPUESTA,COLOR_BLANCO)
-    mostrar_texto(pantalla, f"VIDAS: {datos_juego['vidas']}", (10, 10), FUENTE_TEXTO, COLOR_NEGRO)
-    mostrar_texto(pantalla, f"PUNTUACION: {datos_juego['puntuacion']}", (10, 40), FUENTE_RANKING, COLOR_NEGRO)
+    mostrar_texto(boton_volver["superficie"],"VOLVER",(5,5),FUENTE_BOTON,COLOR_BLANCO)
+    mostrar_texto(pantalla, f"VIDAS: {datos_juego['vidas']}", (10, 10), FUENTE_GENERAL, COLOR_NEGRO)
+    mostrar_texto(pantalla, f"PUNTUACION: {datos_juego['puntuacion']}", (10, 40), FUENTE_GENERAL, COLOR_NEGRO)
     mostrar_texto(pantalla, f"TIEMPO: {datos_juego['tiempo_pregunta']} seg", (350, 10), FUENTE_TEXTO, COLOR_ROJO)
 
     return retorno
