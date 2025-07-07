@@ -1,6 +1,7 @@
 import pygame
 from Constantes import *
 from Funciones import *
+from datetime import datetime
 
 pygame.init()
 
@@ -23,9 +24,11 @@ def guardar_puntuacion(datos_juego: dict, ruta_archivo: str = "Ranking_jugadas.j
         None
     """
     lista_jugadores = leer_json(ruta_archivo)
+    fecha_actual = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     nuevo_jugador = {
         "Nombre": datos_juego["nombre"],
-        "Puntuacion": datos_juego["puntuacion"]
+        "Puntuacion": datos_juego["puntuacion"],
+        "Fecha": fecha_actual
     }
     lista_jugadores.append(nuevo_jugador)
     generar_json(ruta_archivo, lista_jugadores)

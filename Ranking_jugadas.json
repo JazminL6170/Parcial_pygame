@@ -70,5 +70,29 @@
     {
         "Nombre": "JAZMIN2222",
         "Puntuacion": 125
+    },
+    {
+        "Nombre": "AGUS",
+        "Puntuacion": 25
+    },
+    {
+        "Nombre": "AGUS",
+        "Puntuacion": -75,
+        "Fecha": "2025-07-07 11:18:10"
+    },
+    {
+        "Nombre": "AGUS",
+        "Puntuacion": 100,
+        "Fecha": "2025-07-07 11:21:57"
+    },
+    {
+        "Nombre": "AGUS",
+        "Puntuacion": 25,
+        "Fecha": "2025-07-07 11:24:54"
+    },
+    {
+        "Nombre": "AGUS",
+        "Puntuacion": 100,
+        "Fecha": "2025-07-07 11:47:46"
     }
 ]

@@ -29,8 +29,9 @@ def mostrar_top_jugadores(pantalla: pygame.Surface,  lista_jugadores: list,
     for i, jugador in enumerate(lista_jugadores[:max_jugadores]):
         nombre = str(jugador["Nombre"])
         puntaje = str(jugador["Puntuacion"])
-        mostrar_texto(pantalla, f"{i + 1}. Nombre : {nombre} - Puntuacion: {puntaje}", (x, y), fuente, color)
-        y += 40
+        fecha = jugador.get("Fecha", "Sin fecha")
+        mostrar_texto(pantalla, f"{i + 1}. Nombre : {nombre} - Puntuacion: {puntaje} - Fecha: {fecha}", (x, y), fuente, color)
+        y += 35
 
 def mostrar_rankings(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event],lista_rankings:list) -> str:
     """
@@ -65,7 +66,7 @@ def mostrar_rankings(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Even
     
     pantalla.blit(fondo_pantalla, (0,0))
     datos = lista_rankings
-    mostrar_top_jugadores(pantalla, datos[0], FUENTE_GENERAL, COLOR_BLANCO)
+    mostrar_top_jugadores(pantalla, datos[0], FUENTE_RANKING, COLOR_BLANCO)
     
    
     pantalla.blit(boton_volver["superficie"],boton_volver["rectangulo"])
