@@ -7,13 +7,47 @@ pygame.init()
 fuente = FUENTE_TEXTO
 cuadro = crear_elemento_juego("textura_cuadro_final.jpg",250,50,20,190)
 fondo_pantalla = pygame.transform.scale(pygame.image.load("foto_final.jpg"),PANTALLA)
+
+def guardar_puntuacion(datos_juego: dict, ruta_archivo: str = "Ranking_jugadas.json") -> None:
+    """
+    Guarda el nombre y la puntuación del jugador actual en el archivo de rankings.
+
+    Args:
+        datos_juego (dict): Diccionario con el nombre y puntuación del jugador.
+        ruta_archivo (str): Ruta del archivo JSON a actualizar.
+
+    Returns:
+        None
+    """
+    lista_jugadores = leer_json(ruta_archivo)
+    nuevo_jugador = {
+        "Nombre": datos_juego["nombre"],
+        "Puntuacion": datos_juego["puntuacion"]
+    }
+    lista_jugadores.append(nuevo_jugador)
+    generar_json(ruta_archivo, lista_jugadores)
+    
+    return None
+
 def mostrar_fin_juego(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Event],datos_juego:dict, lista_jugadores: list) -> str:
+    """
+    Muestra la pantalla final del juego donde el jugador ingresa su nombre para guardar la puntuación.
+
+    Args:
+        pantalla (pygame.Surface): Superficie donde se dibujan todos los elementos visuales.
+        cola_eventos (list[pygame.event.Event]): Lista de eventos recibidos de pygame.
+        datos_juego (dict): Diccionario que contiene los datos actuales del jugador,
+        incluyendo 'nombre' y 'puntuacion'.
+        lista_jugadores (list): Lista con los jugadores cargados previamente.
+
+    Returns:
+        str: Indicador de la siguiente pantalla a mostrar.
+    """
     retorno = "terminado"
     pygame.mixer.music.set_volume(0)
 
     for evento in cola_eventos:
         if evento.type == pygame.QUIT:
-            #Estaria bueno forzarle al usuario que no pueda salir del juego hasta que guarde la puntuacion -> A gusto de ustedes
             retorno = "salir"
         elif evento.type == pygame.KEYDOWN:
 
@@ -36,10 +70,7 @@ def mostrar_fin_juego(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Eve
                     datos_juego["nombre"] += letra_presionada
             if letra_presionada == "return":
                 limpiar_superficie(cuadro,"textura_cuadro_final.jpg",250,50)
-                lista_jugadores = leer_json("Ranking_jugadas.json")
-                nuevo_jugador = {"Nombre": datos_juego["nombre"], "Puntuacion": datos_juego["puntuacion"]}
-                lista_jugadores.append(nuevo_jugador)
-                generar_json("Ranking_jugadas.json", lista_jugadores)
+                guardar_puntuacion(datos_juego, "Ranking_jugadas.json")
                 reiniciar_estadisticas(datos_juego)
                 retorno = "menu"
             
