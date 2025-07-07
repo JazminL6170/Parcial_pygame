@@ -44,7 +44,7 @@ def mostrar_fin_juego(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Eve
         lista_jugadores (list): Lista con los jugadores cargados previamente.
 
     Returns:
-        str: Indicador de la siguiente pantalla a mostrar.
+        str: Indicador de la siguiente pantalla a mostrar
     """
     retorno = "terminado"
     pygame.mixer.music.set_volume(0)
@@ -58,6 +58,7 @@ def mostrar_fin_juego(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Eve
                 reiniciar_estadisticas(datos_juego)
                 retorno = "menu"
             elif boton_reiniciar["rectangulo"].collidepoint(evento.pos):
+                limpiar_superficie(cuadro,"textura_cuadro_final.jpg",250,50)
                 reiniciar_estadisticas(datos_juego)
                 retorno = "juego"
 
