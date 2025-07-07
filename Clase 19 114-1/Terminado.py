@@ -97,9 +97,11 @@ def mostrar_fin_juego(pantalla:pygame.Surface,cola_eventos:list[pygame.event.Eve
     mostrar_texto(cuadro["superficie"],datos_juego["nombre"],(10,0),fuente,COLOR_BLANCO)
     mostrar_texto(pantalla,"Fin del Juego",(200,20),fuente,COLOR_BLANCO)
     mostrar_texto(pantalla,"Ingrese su nombre",(20,150),FUENTE_GENERAL,COLOR_BLANCO)
-    mostrar_texto(pantalla,f"Usted obtuvo: {datos_juego["puntuacion"]} puntos",(20,95),FUENTE_GENERAL,COLOR_NEGRO)
+    mostrar_texto(pantalla,f"Usted obtuvo: ",(20,95),FUENTE_GENERAL,COLOR_NEGRO)
+    mostrar_texto(pantalla, F"{datos_juego["puntuacion"]} puntos", (200, 95),FUENTE_GENERAL, COLOR_ROJO)
     mostrar_texto(boton_volver["superficie"], "VOLVER", (20, 10), FUENTE_BOTON, COLOR_BLANCO)
     mostrar_texto(boton_reiniciar["superficie"], "REINICIAR", (10, 10), FUENTE_BOTON, COLOR_BLANCO)
+    mostrar_texto(pantalla,"Presione enter para agregar su puntuacion al RANKING", (20,400),FUENTE_TEXTO, COLOR_VERDE)
 
 
     return retorno
