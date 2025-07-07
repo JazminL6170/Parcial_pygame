@@ -1,9 +1,5 @@
 import os
 
-#PARSER -> Conversion 
-#Pasar del archivo CSV a una lista de diccionarios (todos str)
-#La cabecera del csv se van a convertir en las claves de mi diccionario
-
 def mostrar_diccionario(diccionario) -> None:
     """
     Muestra por consola todas las claves y valores de un diccionario, con formato estético.
