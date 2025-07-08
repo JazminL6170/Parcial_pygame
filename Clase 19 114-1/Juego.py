@@ -25,6 +25,10 @@ def mostrar_juego(pantalla: pygame.Surface, cola_eventos: list[pygame.event.Even
 
     retorno = "juego"
 
+    if datos_juego["musica_activada"] and not pygame.mixer.music.get_busy():
+        pygame.mixer.music.load("musica.mp3")
+        pygame.mixer.music.play(-1)
+
     pygame.mixer.music.set_volume(datos_juego["volumen_musica"] / 100)
 
     pregunta_actual = lista_preguntas[datos_juego["indice"]]
