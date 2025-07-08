@@ -8,8 +8,8 @@ boton_volver = crear_elemento_juego("textura_respuesta.jpg",100,40,10,10)
 fondo_pantalla = pygame.transform.scale(pygame.image.load("ranking_fondo.jpg"),PANTALLA)
 
 def mostrar_top_jugadores(pantalla: pygame.Surface,  lista_jugadores: list,
-    fuente: pygame.font.Font, color: tuple, pos_inicial: tuple = (30, 80),
-    max_jugadores: int = 10) -> None:
+    fuente: pygame.font.Font, color: tuple, pos_inicial = (30, 80),
+    max_jugadores = 10) -> None:
     """
     Muestra en pantalla los mejores puntajes de los primeros 10 jugadores.
 
@@ -31,7 +31,7 @@ def mostrar_top_jugadores(pantalla: pygame.Surface,  lista_jugadores: list,
       nombre = str(jugador["Nombre"])
       puntaje = str(jugador["Puntuacion"])
       fecha = jugador.get("Fecha", "Sin fecha")
-      mostrar_texto(pantalla, f"{i }. Nombre : {nombre} - Puntuacion: {puntaje} - Fecha: {fecha}", (x, y), fuente, color)
+      mostrar_texto(pantalla, f"{i}. Nombre : {nombre} - Puntuacion: {puntaje} - Fecha: {fecha}", (x, y), fuente, color)
       y += 35
       i += 1
 
