@@ -54,6 +54,7 @@ while corriendo:
         ventana_actual = mostrar_rankings(pantalla, cola_eventos, lista_jugadores)
 
     elif ventana_actual == "ajustes":
+        bandera_juego = False
         ventana_actual = mostrar_ajustes(pantalla, cola_eventos, datos_juego)
 
     elif ventana_actual == "juego":
