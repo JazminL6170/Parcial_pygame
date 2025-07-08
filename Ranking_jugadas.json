@@ -94,5 +94,10 @@
         "Nombre": "AGUS",
         "Puntuacion": 100,
         "Fecha": "2025-07-07 11:47:46"
+    },
+    {
+        "Nombre": "AGUS",
+        "Puntuacion": 1500,
+        "Fecha": "2025-07-08 08:57:52"
     }
 ]
